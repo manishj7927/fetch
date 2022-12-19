@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <div id="wrapper">
+                <form action="">
+                    <input type="text" placeholder="enter country name">
+                    <button>submit</button>
+                </form>
+                <div class="flag"></div>
+            </div>
+    <script>
+        const form = document.querySelector('form')
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            let name = document.querySelector('input').value
+
+            fetch('http://flagcdn.com/en/codes.json')
+            .then((response) => {return response.json()})
+            .then((countrycodes) => {console.log(countrycodes); flag(countrycodes , name) })
+
+        }
+        function flag(countrycodes, name){
+            name = name.toLowerCase()
+            let firstletter = name[0].toUpperCase()
+            let name1 = name.split('')
+            name1.splice(0,1,firstletter)
+            let getflag = name1.join('')
+            
+           
+            }
+        }
+    </script>
+    
+</body>
+</html>
